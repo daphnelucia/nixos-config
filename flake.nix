@@ -13,9 +13,12 @@
       system = "x86_64-linux";
       specialArgs = inputs;
       modules = [ 
-	    { networking.hostName = "zarina"; }
+		{ networking.hostName = "zarina"; }
+		./hardware/zarina.nix
 	  	./configuration.nix
+
 		nix-flatpak.nixosModules.nix-flatpak # todo: move to home-manager flatpak
+		
 		home-manager.nixosModules.home-manager
 		{
 		  home-manager = {

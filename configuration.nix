@@ -5,11 +5,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
-
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "steam"
     "steamcmd"
@@ -18,7 +13,7 @@
     "steam-run"
     "nvidia-x11"
     "nvidia-settings"    
-	"obsidian"
+    "obsidian"
   ];
 
   # Use the systemd-boot EFI boot loader.
