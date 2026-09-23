@@ -2,25 +2,12 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-let
-  # External let binding to fetch nix-flatpak without 
-  # causing infinite recursion.
-  pkgs = import <nixpkgs> {};
-  
-  nix-flatpak = pkgs.fetchFromGitHub {
-    owner = "gmodena";
-    repo = "nix-flatpak";
-    rev = "v0.7.0";
-    hash = "sha256-7ZCulYUD9RmJIDULTRkGLSW1faMpDlPKcbWJLYHoXcs=";
-  };
-in { config, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./home-manager.nix
-      "${nix-flatpak}/modules/nixos.nix"
     ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
@@ -31,6 +18,7 @@ in { config, lib, pkgs, ... }:
     "steam-run"
     "nvidia-x11"
     "nvidia-settings"    
+	"obsidian"
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -43,7 +31,6 @@ in { config, lib, pkgs, ... }:
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.open = true;
     
-  networking.hostName = "nixos"; # Define your hostname.
 
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
@@ -76,7 +63,7 @@ in { config, lib, pkgs, ... }:
   };
   networking.hosts = {
     "172.30.185.131" = ["biz.local"];
-    "127.0.0.1" = ["reddit.com" "www.reddit.com" "www.youtube.com" "youtube.com" "www.instagram.com" "instagram.com"];
+    #"127.0.0.1" = ["reddit.com" "www.reddit.com" "www.youtube.com" "youtube.com" "www.instagram.com" "instagram.com"];
   };
   services.syncthing = {
     enable = true;
@@ -241,7 +228,6 @@ in { config, lib, pkgs, ... }:
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.
-  system.copySystemConfiguration = true;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

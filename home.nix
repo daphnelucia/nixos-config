@@ -1,54 +1,4 @@
-{ config, pkgs, lib, ... }:
-let
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-26.05.tar.gz";
-  sharedConfig = {
-    programs.git = {
-      enable = true;
-      settings = {
-        user = {
-          name = "Daphne Lucia";
-          email = "38116582+daphnelucia@users.noreply.github.com";
-        };
-        init.defaultBranch = "main";
-      };
-    };
-    programs.gh = {
-      enable = true;
-      gitCredentialHelper = {
-        enable = true;
-      };
-    };
-    
-    programs.neovim = {
-      enable = true;
-      defaultEditor = true;
-
-      extraConfig = ''
-        set relativenumber
-        set tabstop=4
-        set shiftwidth=4
-        set nowrap
-      '';
-    };
-    
-    programs.nix-your-shell = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-
-    home.file.".config/fish/config.fish".source = ./config/fish/config.fish;
-        
-    home.stateVersion = "26.05";
-  }; 
-in
-{
-  imports = [
-    (import "${home-manager}/nixos")    
-  ];
-
-  home-manager.users.root = { ... }: sharedConfig;
-
-  home-manager.users.lapochka = { pkgs, ... }: lib.recursiveUpdate {
+{ pkgs, sharedConfig, lib, ... }: lib.recursiveUpdate {
     home.packages = with pkgs; [
       qpwgraph
       pwvucontrol
@@ -66,6 +16,8 @@ in
       krita
       milkytracker
       mpv
+      scribus
+      libreoffice
 
       kdePackages.dolphin
       kdePackages.qtsvg
@@ -74,11 +26,6 @@ in
       cliphist
       wl-clip-persist
     ];
-    nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-      "obsidian"
-    ];
-
-    # programs
 
     programs.librewolf = {
       enable = true;
@@ -236,5 +183,4 @@ in
     # other links
     home.file.".config/hypr/hyprland.lua".source = ./config/hypr/hyprland.lua;
     home.file.".config/waybar".source = ./config/waybar;
-  } sharedConfig;
-}
+} sharedConfig
