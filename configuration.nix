@@ -61,18 +61,12 @@
     "172.30.185.131" = ["biz.local"];
     #"127.0.0.1" = ["reddit.com" "www.reddit.com" "www.youtube.com" "youtube.com" "www.instagram.com" "instagram.com"];
   };
+  services.flatpak.enable = true;
   services.syncthing = {
     enable = true;
     openDefaultPorts = true;
   };
 
-  services.flatpak = {
-    enable = true;
-    packages = [
-      "org.vinegarhq.Sober"
-      "org.prismlauncher.PrismLauncher"
-    ];
-  };
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
   

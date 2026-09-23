@@ -1,4 +1,6 @@
-{ pkgs, sharedConfig, lib, ... }: lib.recursiveUpdate {
+{ pkgs, sharedConfig, lib, flatpak, ... }: lib.recursiveUpdate {
+    imports = [ flatpak ];
+
     home.packages = with pkgs; [
       qpwgraph
       pwvucontrol
@@ -26,7 +28,14 @@
       cliphist
       wl-clip-persist
     ];
-
+    
+    services.flatpak = {
+      packages = [
+        "org.vinegarhq.Sober"
+        "org.prismlauncher.PrismLauncher"
+      ];
+    };
+ 
     programs.librewolf = {
       enable = true;
       # Enable WebGL, cookies and history

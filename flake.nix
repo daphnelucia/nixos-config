@@ -16,15 +16,17 @@
 		{ networking.hostName = "zarina"; }
 		./hardware/zarina.nix
 	  	./configuration.nix
-
-		nix-flatpak.nixosModules.nix-flatpak # todo: move to home-manager flatpak
-		
+	
 		home-manager.nixosModules.home-manager
 		{
 		  home-manager = {
 			useGlobalPkgs = true;
 			useUserPackages = true;
-			extraSpecialArgs = { inherit inputs; sharedConfig = import ./home-shared.nix; };
+			extraSpecialArgs = { 
+			  inherit inputs; 
+			  sharedConfig = import ./home-shared.nix; 
+			  flatpak = nix-flatpak.homeManagerModules.nix-flatpak;
+			};
 		    users.lapochka = ./home.nix;
 			users.root = ./home-shared.nix;
 		  };
