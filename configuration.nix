@@ -14,6 +14,7 @@
     "nvidia-x11"
     "nvidia-settings"    
     "obsidian"
+    "davinci-resolve"
   ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -69,7 +70,7 @@
 
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
-  
+
   programs.hyprland = {
     enable = true;
     withUWSM = true;
@@ -127,7 +128,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.lapochka = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "adbusers" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; []; # defined in home manager
     shell = pkgs.fish;
   };
@@ -147,6 +148,7 @@
     libqalculate
     ffmpeg
     unzip
+    android-tools
 
     steamcmd
     pkgsi686Linux.gperftools

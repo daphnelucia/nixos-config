@@ -1,4 +1,4 @@
-{ pkgs, sharedConfig, lib, flatpak, ... }: lib.recursiveUpdate {
+{ pkgs, lib, withExtraConfig, flatpak, ... }: withExtraConfig { inherit pkgs lib; } {
     imports = [ flatpak ];
 
     home.packages = with pkgs; [
@@ -66,11 +66,7 @@
         obs-vkcapture
       ];
     };
-
-    programs.fuzzel = {
-      enable = true;
-    };
-    
+  
     programs.alacritty = {
       enable = true;
       settings = {
@@ -190,6 +186,5 @@
         "Imouto";
 
     # other links
-    home.file.".config/hypr/hyprland.lua".source = ./config/hypr/hyprland.lua;
     home.file.".config/waybar".source = ./config/waybar;
-} sharedConfig
+}

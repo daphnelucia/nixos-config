@@ -24,8 +24,11 @@
 			useUserPackages = true;
 			extraSpecialArgs = { 
 			  inherit inputs; 
-			  sharedConfig = import ./home-shared.nix; 
 			  flatpak = nix-flatpak.homeManagerModules.nix-flatpak;
+			  withExtraConfig = (import ./utils/withExtraConfig.nix) { 
+			  	sharedConfig = import ./home-shared.nix;
+				extraConfig = import ./systems/zarina.nix;
+			  };
 			};
 		    users.lapochka = ./home.nix;
 			users.root = ./home-shared.nix;
