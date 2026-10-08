@@ -13,9 +13,9 @@
       specialArgs = inputs;
       modules = [
         { networking.hostName = "francesca"; }
-	./hardware/francesca.nix
-	./apple-silicon-support
-	./temp-config.nix
+		./systems/francesca/hardware.nix
+		./apple-silicon-support
+		./temp-config.nix
       ];
     };
     nixosConfigurations.zarina = nixpkgs.lib.nixosSystem {
@@ -23,7 +23,7 @@
       specialArgs = inputs;
       modules = [ 
 		{ networking.hostName = "zarina"; }
-		./hardware/zarina.nix
+		./systems/zarina/hardware.nix
 	  	./configuration.nix
 	
 		home-manager.nixosModules.home-manager
@@ -36,7 +36,7 @@
 			  flatpak = nix-flatpak.homeManagerModules.nix-flatpak;
 			  withExtraConfig = (import ./utils/withExtraConfig.nix) { 
 			  	sharedConfig = import ./home-shared.nix;
-				extraConfig = import ./systems/zarina.nix;
+				extraConfig = import ./systems/zarina/extra.nix;
 			  };
 			};
 		    users.lapochka = ./home.nix;
