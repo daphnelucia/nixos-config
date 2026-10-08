@@ -18,6 +18,11 @@
 		./apple-silicon-support
 		./configuration.nix
 		./systems/francesca/configuration.nix
+        
+		home-manager.nixosModules.home-manager
+		((import ./utils/homeManagerOptions.nix) {
+		  extraConfig = import ./systems/francesca/extra.nix
+		})
       ];
     };
     nixosConfigurations.zarina = nixpkgs.lib.nixosSystem {
@@ -30,22 +35,9 @@
 		./systems/zarina/configuration.nix
 	
 		home-manager.nixosModules.home-manager
-		{
-		  home-manager = {
-			useGlobalPkgs = true;
-			useUserPackages = true;
-			extraSpecialArgs = { 
-			  inherit inputs; 
-			  flatpak = nix-flatpak.homeManagerModules.nix-flatpak;
-			  withExtraConfig = (import ./utils/withExtraConfig.nix) { 
-			  	sharedConfig = import ./home-shared.nix;
-				extraConfig = import ./systems/zarina/extra.nix;
-			  };
-			};
-		    users.lapochka = ./home.nix;
-			users.root = ./home-shared.nix;
-		  };
-		}
+		((import ./utils/homeManagerOptions.nix) {
+		  extraConfig = import ./systems/zarina/extra.nix
+		})
 	  ];
     };
   };
