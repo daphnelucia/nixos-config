@@ -120,14 +120,9 @@ button:hover {
     /* font-size: 9px */
 }
 
-#battery {
-    background-color: #ffffff;
-    color: #000000;
-}
 
 #battery.charging, #battery.plugged {
-    color: #ffffff;
-    background-color: #26A65B;
+    color: #26A65B;
 }
 
 @keyframes blink {
