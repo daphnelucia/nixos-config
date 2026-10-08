@@ -115,8 +115,6 @@
     android-tools
 
     steamcmd
-    pkgsi686Linux.gperftools
-
   ];
  
   fonts = {
