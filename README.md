@@ -15,6 +15,7 @@ manually needed:
 * setup obs streaming
 
 todo:
+* setup brightness & volume control keys in asahi
 * fix input in asahi (figure out double clicking & gestures)
 * setup removable devices in asahi
 * setup steam in asahi (https://github.com/thatwhichisdev/steam-asahi)
