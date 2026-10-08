@@ -165,9 +165,6 @@
       '';
     };
 
-    # firewall
-    services.opensnitch-ui.enable = true;
-
     # cursor
     home.pointerCursor =
     let
