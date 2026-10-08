@@ -15,6 +15,7 @@ manually needed:
 * setup obs streaming
 
 todo:
+* setup steam in asahi (https://github.com/thatwhichisdev/steam-asahi)
 * when next ly version is released (https://codeberg.org/fairyglade/ly/releases/tag/v1.5.0-rc1), add cute animations to login screen
 * setup srcds & figure out libraries needed
 * setup playit declaratively
