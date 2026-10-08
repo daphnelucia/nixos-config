@@ -113,8 +113,6 @@
     ffmpeg
     unzip
     android-tools
-
-    steamcmd
   ];
  
   fonts = {
