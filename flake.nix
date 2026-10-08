@@ -10,12 +10,14 @@
 
   outputs = { self, nixpkgs, home-manager, nix-flatpak, ... } @ inputs: {
     nixosConfigurations.francesca = nixpkgs.lib.nixosSystem {
+	  system = "aarch64-linux";
       specialArgs = inputs;
       modules = [
         { networking.hostName = "francesca"; }
 		./systems/francesca/hardware.nix
 		./apple-silicon-support
-		./temp-config.nix
+		./configuration.nix
+		./systems/francesca/configuration.nix
       ];
     };
     nixosConfigurations.zarina = nixpkgs.lib.nixosSystem {
@@ -25,6 +27,7 @@
 		{ networking.hostName = "zarina"; }
 		./systems/zarina/hardware.nix
 	  	./configuration.nix
+		./systems/zarina/configuration.nix
 	
 		home-manager.nixosModules.home-manager
 		{

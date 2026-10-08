@@ -11,6 +11,8 @@ manually needed:
 * setup default audio devices
 * change gmod launch command to `GMOD_ENABLE_LD_PRELOAD=1 LD_PRELOAD=$LD_PRELOAD:/run/current-system/sw/lib/libtcmalloc_minimal.so %command%`
 * setup r2modman/bepinex for ultimate chicken horse
+* setup syncthing folders
+* setup obs streaming
 
 todo:
 * when next ly version is released (https://codeberg.org/fairyglade/ly/releases/tag/v1.5.0-rc1), add cute animations to login screen
