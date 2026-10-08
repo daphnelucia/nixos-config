@@ -21,7 +21,8 @@
         
 		home-manager.nixosModules.home-manager
 		((import ./utils/homeManagerOptions.nix) {
-		  extraConfig = import ./systems/francesca/extra.nix
+		  inherit inputs;
+		  extraConfig = import ./systems/francesca/extra.nix;
 		})
       ];
     };
@@ -36,7 +37,8 @@
 	
 		home-manager.nixosModules.home-manager
 		((import ./utils/homeManagerOptions.nix) {
-		  extraConfig = import ./systems/zarina/extra.nix
+		  inherit inputs;
+		  extraConfig = import ./systems/zarina/extra.nix;
 		})
 	  ];
     };
