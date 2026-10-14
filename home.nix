@@ -1,5 +1,5 @@
-{ pkgs, lib, withExtraConfig, flatpak, ... }: withExtraConfig { inherit pkgs lib; } {
-    imports = [ flatpak ];
+{ pkgs, lib, withExtraConfig, flatpak, systemHome, ... }: withExtraConfig { inherit pkgs lib; } {
+    imports = [ flatpak systemHome ];
 
     home.packages = with pkgs; [
       qpwgraph
