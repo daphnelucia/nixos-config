@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
-
+let username = "lapochka"; in
 {
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "steam"
@@ -44,7 +44,9 @@
   services.syncthing = {
     enable = true;
     openDefaultPorts = true;
-	user = "lapochka";
+	user = username;
+	dataDir = "/home/${username}";
+	databaseDir = "/home/${username}/.config/syncthing";
   };
 
   programs.fish.enable = true;
@@ -91,7 +93,7 @@
     jack.enable = true;
   };
 
-  users.users.lapochka = {
+  users.users.${username} = {
     isNormalUser = true;
     extraGroups = [ "wheel" "adbusers" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; []; # defined in home manager
