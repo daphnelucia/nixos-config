@@ -370,14 +370,16 @@ hl.window_rule({
 })
 
 for _, autostart in pairs(autostartInWorkspace) do
-  hl.window_rule({
-      name = "autostart-" .. autostart[1],
-      match = {
-          class = autostart[2]
-      },
-      workspace = autostart[3]
-  })
-  hl.workspace_rule({ workspace = autostart[3], monitor = monitors[autostart[4]], default = true })
+  if autostart[2] ~= nil then
+    hl.window_rule({
+        name = "autostart-" .. autostart[1],
+        match = {
+            class = autostart[2]
+        },
+        workspace = autostart[3]
+    })
+    hl.workspace_rule({ workspace = autostart[3], monitor = monitors[autostart[4]], default = true })
+  end
 end
 
 

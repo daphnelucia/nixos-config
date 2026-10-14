@@ -14,6 +14,7 @@
 				7 # workspace
 				1 # monitor
 			]
+			[ "udiskie" ]
 		];
 	};
 }
