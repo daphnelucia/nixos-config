@@ -44,6 +44,7 @@
   services.syncthing = {
     enable = true;
     openDefaultPorts = true;
+	user = "lapochka";
   };
 
   programs.fish.enable = true;
