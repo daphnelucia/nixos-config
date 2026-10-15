@@ -6,6 +6,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 	nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.7.0";
+	moonshine.url = "github:hgaiser/moonshine";
   };
 
   outputs = { self, nixpkgs, home-manager, nix-flatpak, ... } @ inputs:
@@ -30,9 +31,9 @@
 		  ./common/standard-efi.nix
 	      ./common/data-partition.nix	
 		  ./common/steam.nix
-
+        ] ++ modules ++ [
 		  ./systems/${name}/configuration.nix	
-	    ] ++ make-home-modules name ++ modules;
+	    ] ++ make-home-modules name;
     }; in {
       nixosConfigurations.francesca = nixpkgs.lib.nixosSystem {
 	    system = "aarch64-linux";
@@ -46,6 +47,6 @@
         ] ++ make-home-modules "francesca";
       };
       nixosConfigurations.zarina = make-x86_64-system "zarina" [];
-      nixosConfigurations.imogen = make-x86_64-system "imogen" [];
+      nixosConfigurations.imogen = make-x86_64-system "imogen" [ inputs.moonshine.nixosModules.default ];
     };
 }

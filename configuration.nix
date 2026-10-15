@@ -94,6 +94,7 @@ let username = "lapochka"; in
   };
 
   users.users.${username} = {
+    uid = 1000;
     isNormalUser = true;
     extraGroups = [ "wheel" "adbusers" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; []; # defined in home manager
