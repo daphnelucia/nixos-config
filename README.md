@@ -1,5 +1,6 @@
 # personal nixos config
 systems:
+
 `zarina` - x86_64 main desktop system with data partition
 
 `francesca` - aarch64 asahi linux m2 macbook
