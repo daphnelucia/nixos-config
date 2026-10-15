@@ -44,5 +44,22 @@
 		})
 	  ];
     };
+    nixosConfigurations.imogen = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = inputs;
+      modules = [ 
+		{ networking.hostName = "imogen"; }
+		./systems/imogen/hardware.nix
+	  	./configuration.nix
+		./systems/imogen/configuration.nix
+	
+		home-manager.nixosModules.home-manager
+		((import ./utils/homeManagerOptions.nix) {
+		  inherit inputs;
+		  systemHome = import ./systems/imogen/home.nix;
+		  extraConfig = import ./systems/imogen/extra.nix;
+		})
+	  ];
+    };
   };
 }
