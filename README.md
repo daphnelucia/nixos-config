@@ -22,7 +22,6 @@ manually needed:
 * setup obs streaming
 
 todo:
-* setup sunshine and graphic drivers in imogen
 * verify gammastep works in francesca
 * use flake input for apple silicon support
 * when next ly version is released (https://codeberg.org/fairyglade/ly/releases/tag/v1.5.0-rc1), add cute animations to login screen
