@@ -1,4 +1,8 @@
 # personal nixos config
+systems:
+`zarina` - x86_64 main desktop system with data partition
+`francesca` - aarch64 asahi linux m2 macbook
+`imogen` - x86_64 mini pc game streaming system with data partition
 
 manually needed:
 * login to github with `gh auth login` on both user and root accounts
