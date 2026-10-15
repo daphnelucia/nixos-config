@@ -5,6 +5,7 @@
 		menu = pkgs.fuzzel;
 		
 		monitors = [ 
+		  "HDMI-A-1"
 		];
 		autostartInWorkspace = [
 		];

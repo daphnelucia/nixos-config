@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 {
   boot.loader.efi.canTouchEfiVariables = true;
+  hardware.graphics.enable32Bit = true;
   hardware.nvidia.modesetting.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.open = true;
