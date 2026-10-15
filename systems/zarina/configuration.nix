@@ -12,7 +12,7 @@
   };
 
   fileSystems = let ntfs-drives = [
-    "/mnt/hdd"
+#    "/mnt/hdd"
     "/mnt/windows"
   #  "/mnt/data"
   ]; in lib.genAttrs ntfs-drives (path: {
