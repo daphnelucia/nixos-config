@@ -22,8 +22,27 @@ let username = "lapochka"; in
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.backend = "iwd";
 
+  services.openssh.enable = true; 
+
+  age.secrets.timezone.file = ./secrets/timezone.age;
   # Set your time zone.
-  time.timeZone = "America/Mexico_City";
+  systemd.services.apply-secret-timezone = {
+    description = "Apply timezone from Agenix secret";
+    
+    after = [ "agenix.service" ];
+    wants = [ "agenix.service" ];
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+
+    script = ''
+      TZ_VALUE=$(cat "${config.age.secrets.timezone.path}")
+      ${pkgs.systemd}/bin/timedatectl set-timezone "$TZ_VALUE"
+    '';
+  };
 
   console = {
     useXkbConfig = true; # use xkb.options in tty.

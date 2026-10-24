@@ -7,9 +7,10 @@
     };
 	nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.7.0";
 	moonshine.url = "github:hgaiser/moonshine";
+	agenix.url = "github:ryantm/agenix";
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-flatpak, ... } @ inputs:
+  outputs = { self, nixpkgs, home-manager, nix-flatpak, agenix, ... } @ inputs:
     let 
 	  make-home-modules = name: [
 	    home-manager.nixosModules.home-manager
@@ -19,6 +20,10 @@
 		  extraConfig = import ./systems/${name}/extra.nix;
 		})
 	  ];
+	  base-modules = [
+	    agenix.nixosModules.default
+	  	./configuration.nix
+	  ];
 
 	  make-x86_64-system = name: modules: nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -26,13 +31,12 @@
         modules = [ 
 		  { networking.hostName = name; }
 		  ./systems/${name}/hardware.nix
-	  	
-		  ./configuration.nix
+		] ++ base-modules ++ [
 		  ./common/standard-efi.nix
 	      ./common/data-partition.nix	
 		  ./common/steam.nix
         ] ++ modules ++ [
-		  ./systems/${name}/configuration.nix	
+		  ./systems/${name}/configuration.nix
 	    ] ++ make-home-modules name;
     }; in {
       nixosConfigurations.francesca = nixpkgs.lib.nixosSystem {
@@ -42,7 +46,7 @@
           { networking.hostName = "francesca"; }
 		  ./systems/francesca/hardware.nix
 		  ./apple-silicon-support
-		  ./configuration.nix
+		] ++ base-modules ++ [
 		  ./systems/francesca/configuration.nix
         ] ++ make-home-modules "francesca";
       };
