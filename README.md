@@ -22,6 +22,7 @@ manually needed:
 * setup obs streaming
 
 todo:
+* setup agenix in zarina and imogen
 * setup autologin in imogen
 * verify gammastep works in francesca
 * use flake input for apple silicon support
