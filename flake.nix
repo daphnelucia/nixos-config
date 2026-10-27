@@ -8,9 +8,13 @@
 	nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.7.0";
 	moonshine.url = "github:hgaiser/moonshine";
 	agenix.url = "github:ryantm/agenix";
+	vim-fennel = {
+	  url = "github:atweiden/vim-fennel";
+	  flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-flatpak, agenix, ... } @ inputs:
+  outputs = { self, nixpkgs, home-manager, nix-flatpak, agenix, vim-fennel, ... } @ inputs:
     let 
 	  make-home-modules = name: [
 	    home-manager.nixosModules.home-manager

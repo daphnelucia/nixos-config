@@ -127,7 +127,24 @@
         "home-manager": "home-manager",
         "moonshine": "moonshine",
         "nix-flatpak": "nix-flatpak",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_3",
+        "vim-fennel": "vim-fennel"
+      }
+    },
+    "vim-fennel": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767263238,
+        "narHash": "sha256-COgNCMYKV0Uy7tduseT+nTn9sUOYsRmqLtvwLDSwQqc=",
+        "owner": "atweiden",
+        "repo": "vim-fennel",
+        "rev": "6f21326ff6706c24625723b073c110090ee3c5db",
+        "type": "github"
+      },
+      "original": {
+        "owner": "atweiden",
+        "repo": "vim-fennel",
+        "type": "github"
       }
     }
   },

@@ -1,4 +1,4 @@
-{ pkgs, lib, withExtraConfig, flatpak, systemHome, ... }: withExtraConfig { inherit pkgs lib; } {
+{ pkgs, lib, withExtraConfig, flatpak, vim-fennel, systemHome, ... }: withExtraConfig { inherit pkgs lib; } {
     imports = [ flatpak systemHome ];
 
     home.packages = with pkgs; [
@@ -35,6 +35,13 @@
         "org.prismlauncher.PrismLauncher"
       ];
     };
+
+	programs.neovim.plugins = [
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "vim-fennel";
+        src = vim-fennel;
+      })
+	];
  
     programs.librewolf = {
       enable = true;

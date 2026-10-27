@@ -22,6 +22,7 @@ manually needed:
 * setup obs streaming
 
 todo:
+* use inputs set for vim-fennel
 * setup agenix in zarina and imogen
 * setup autologin in imogen
 * verify gammastep works in francesca
