@@ -205,14 +205,14 @@ hl.config({
 ---------------
 ---- INPUT ----
 ---------------
-
+local kb_layout = "latam,ru"
+local alt_kb_layout = "us," .. kb_layout
 hl.config({
     input = {
-        kb_layout  = "latam,ru",
+        kb_layout = kb_layout,
         --kb_variant = "",
         --kb_model   = "",
         
-        -- todo: this conflicts with floating mode
         kb_options = "grp:win_space_toggle,caps:escape",
 
         --kb_rules   = "",
@@ -233,11 +233,9 @@ hl.gesture({
     action = "workspace"
 })
 
--- Example per-device config
--- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/ for more
 hl.device({
-    name        = "epic-mouse-v1",
-    sensitivity = -0.5,
+	name = "apple-mtp-keyboard",
+	kb_layout = alt_kb_layout
 })
 
 
