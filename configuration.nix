@@ -136,6 +136,7 @@ let username = "lapochka"; in
     ffmpeg
     unzip
     android-tools
+	jq
   ];
  
   fonts = {

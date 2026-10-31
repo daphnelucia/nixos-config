@@ -299,7 +299,23 @@ hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({ direction = "down" }))
 hl.bind(mainMod .. " + RETURN", hl.dsp.window.move({ monitor = "+1" }))
 
 -- Laptop multimedia keys for volume and LCD brightness
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
+local raiseVolume = "XF86AudioRaiseVolume"
+hl.bind(raiseVolume, hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
+
+local currentDevice = "speakers"
+local altDevice = "headphones"
+
+function changeDefaultDevice()
+	local filter = pw[altDevice]
+	local prevDevice = currentDevice
+	currentDevice = altDevice
+	altDevice = prevDevice
+	local cmd = "DEVICE=$(pw-dump | jq 'map(select(" .. filter .. ") | .id) | .[0]') && wpctl set-default $DEVICE"
+	hl.dispatch(hl.dsp.exec_cmd(cmd))
+end
+
+hl.bind("SHIFT + " .. raiseVolume, changeDefaultDevice)
+
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),      { locked = true, repeating = true })
 hl.bind("XF86AudioMute",        hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),     { locked = true, repeating = true })
 hl.bind("XF86AudioMicMute",     hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),   { locked = true, repeating = true })
