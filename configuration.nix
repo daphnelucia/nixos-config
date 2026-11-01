@@ -17,6 +17,7 @@ let username = "lapochka"; in
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 5;
   
+  virtualisation.docker.enable = true;
   hardware.graphics.enable = true;
 
   networking.networkmanager.enable = true;
