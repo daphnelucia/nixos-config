@@ -9,6 +9,8 @@
 			headphones = '''';
 		};
 
+		screenshotFolder = "";
+
 		monitors = [ 
 		  "HDMI-A-1"
 		];

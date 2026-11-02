@@ -12,6 +12,7 @@ local menu = "${lib.getExe menu}"
 local monitors = ${lib.generators.toLua {} monitors}
 local autostartInWorkspace = ${lib.generators.toLua {} autostartInWorkspace}
 local pw = ${lib.generators.toLua {} pw}
+local screenshotFolder = "${screenshotFolder}"
 -- End generated part
 
 ${builtins.readFile ../config/hypr/hyprland.lua}

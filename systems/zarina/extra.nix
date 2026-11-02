@@ -9,6 +9,8 @@
 			headphones = '''';
 		};
 
+		screenshotFolder = "/mnt/data/Screenshots";
+
 		monitors = [ 
 			"HDMI-A-1" 
 			"DP-1" 

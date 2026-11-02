@@ -9,6 +9,8 @@
 			headphones = ''.info.props."alsa.driver_name" == "snd_usb_audio" and .info.props."media.class" == "Audio/Sink"'';
 		};
 
+		screenshotFolder = "/home/lapochka/data/Screenshots/";
+
 		monitors = [ 
 			"eDP-1"
 		];
