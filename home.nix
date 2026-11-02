@@ -20,6 +20,9 @@
       mpv
       scribus
       libreoffice
+	  moonlight-qt
+	  supertuxkart
+	  love
 
       kdePackages.dolphin
       kdePackages.qtsvg
