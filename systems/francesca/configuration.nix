@@ -7,6 +7,7 @@
     path = "/boot/vendorfw/";
     narHash = "sha256-MIGz+B6vdtfLhYMjZxVl4PFJpeiN2Xq7b8fDpFjDNPo=";
   }).outPath;
+  environment.systemPackages = with pkgs; [ mesa ];
   services.udisks2.enable = true;
   zramSwap.enable = true;
 }
