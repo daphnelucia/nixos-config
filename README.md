@@ -26,7 +26,6 @@ todo:
 * setup agenix in zarina and imogen
 * setup autologin in imogen
 * verify gammastep works in francesca
-* use flake input for apple silicon support
 * when next ly version is released (https://codeberg.org/fairyglade/ly/releases/tag/v1.5.0-rc1), add cute animations to login screen
 * setup srcds & figure out libraries needed
 * setup playit declaratively

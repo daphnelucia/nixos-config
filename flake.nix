@@ -12,9 +12,12 @@
 	  url = "github:atweiden/vim-fennel";
 	  flake = false;
     };
+	apple-silicon = {
+      url = "github:nix-community/nixos-apple-silicon/release-2026-07-30";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-flatpak, agenix, vim-fennel, ... } @ inputs:
+  outputs = { self, nixpkgs, home-manager, nix-flatpak, agenix, vim-fennel, apple-silicon, ... } @ inputs:
     let 
 	  make-home-modules = name: [
 	    home-manager.nixosModules.home-manager
@@ -49,7 +52,7 @@
         modules = [
           { networking.hostName = "francesca"; }
 		  ./systems/francesca/hardware.nix
-		  ./apple-silicon-support
+		  apple-silicon.nixosModules.apple-silicon-support
 		] ++ base-modules ++ [
 		  ./systems/francesca/configuration.nix
         ] ++ make-home-modules "francesca";
