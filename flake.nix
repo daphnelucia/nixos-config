@@ -15,6 +15,10 @@
 	apple-silicon = {
       url = "github:nix-community/nixos-apple-silicon/release-2026-07-30";
     };
+	helium = {
+      url = "github:schembriaiden/helium-browser-nix-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, nix-flatpak, agenix, vim-fennel, apple-silicon, ... } @ inputs:
@@ -28,6 +32,7 @@
 		})
 	  ];
 	  base-modules = [
+		{ nixpkgs.overlays = [ inputs.helium.overlays.default ]; }
 	    agenix.nixosModules.default
 	  	./configuration.nix
 	  ];

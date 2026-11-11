@@ -23,6 +23,7 @@
 	  moonlight-qt
 	  supertuxkart
 	  love
+	  helium
 
       kdePackages.dolphin
       kdePackages.qtsvg
