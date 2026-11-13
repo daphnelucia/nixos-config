@@ -3,6 +3,7 @@
 		terminal = pkgs.alacritty;
 		fileManager = pkgs.kdePackages.dolphin;
 		menu = pkgs.fuzzel;
+		browser = pkgs.librewolf;
 
 		pw = {
 			speakers = '''';

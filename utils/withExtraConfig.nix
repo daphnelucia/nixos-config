@@ -9,6 +9,7 @@
 local terminal = "${lib.getExe terminal}"
 local fileManager = "${lib.getExe fileManager}"
 local menu = "${lib.getExe menu}"
+local browser = "${lib.getExe browser}"
 local monitors = ${lib.generators.toLua {} monitors}
 local autostartInWorkspace = ${lib.generators.toLua {} autostartInWorkspace}
 local pw = ${lib.generators.toLua {} pw}

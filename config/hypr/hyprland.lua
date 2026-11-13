@@ -22,7 +22,7 @@ hl.monitor({
 --
 hl.on("hyprland.start", function () 
   hl.exec_cmd("waybar & hyprpaper & gammastep & yams")
-  hl.exec_cmd("librewolf")
+  hl.exec_cmd(browser)
 
   -- clipboard
   hl.exec_cmd("wl-clip-persist --clipboard both")
