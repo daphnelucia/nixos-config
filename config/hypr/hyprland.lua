@@ -213,7 +213,7 @@ hl.config({
         --kb_variant = "",
         --kb_model   = "",
         
-        kb_options = "grp:win_space_toggle,caps:escape",
+        kb_options = "grp:win_space_toggle,caps:escape,compose:ralt",
 
         --kb_rules   = "",
 
