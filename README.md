@@ -20,6 +20,7 @@ manually needed:
 * setup r2modman/bepinex for ultimate chicken horse
 * setup syncthing folders
 * setup obs streaming
+* setup vpn (login and autoconnect)
 
 todo:
 * use inputs set for vim-fennel
